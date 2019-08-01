@@ -1,0 +1,12 @@
+version: '3'
+services:
+  nginx:
+    restart: always
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./conf:/etc/nginx/conf.d
+      - ./data/letsencrypt:/etc/letsencrypt
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
