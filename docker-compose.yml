@@ -10,3 +10,7 @@ services:
       - ./conf:/etc/nginx/conf.d
       - ./data/letsencrypt:/etc/letsencrypt
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+networks:
+  default:
+    external:
+      name: websites

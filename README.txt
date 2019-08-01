@@ -1,6 +1,7 @@
 # nginx reverse proxy
 
-set configuration details in
+docker network create websites
+set configuration details in conf/nginx.conf
 
 sudo docker-compose build
 sudo docker-compose up -d
