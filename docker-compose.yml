@@ -8,7 +8,8 @@ services:
       - "443:443"
     volumes:
       - ./conf:/etc/nginx/conf.d
-      - ./data/letsencrypt:/etc/letsencrypt
+      - /letsencrypt:/etc/letsencrypt
+      - /var/log/:/var/log
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
 networks:
   default:
