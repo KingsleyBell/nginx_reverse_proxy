@@ -3,7 +3,6 @@ import yaml
 output = open("conf/nginx.conf", "w")
 with open("conf/config.yaml", 'r') as stream:
     config = yaml.safe_load(stream)
-
     for website, settings in config["websites"].items():
         if settings['ssl'] is True:
             servers = [
@@ -65,7 +64,7 @@ with open("conf/config.yaml", 'r') as stream:
             ]
 
         website_conf = [
-            "upstream luke_web {",
+            f"upstream {website} {{",
             "   ip_hash;",
             f"   server {website}:{settings['port']};",
             "}\n",
