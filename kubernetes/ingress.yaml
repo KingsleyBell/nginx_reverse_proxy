@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: luke-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+  - hosts:
+    - www.lukebell.co.za
+    secretName: luke-tls
+  rules:
+  - host: www.lukebell.co.za
+    http:
+      paths:
+      - backend:
+          serviceName: luke-web
+          servicePort: 80
