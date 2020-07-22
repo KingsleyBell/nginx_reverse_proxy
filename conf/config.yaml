@@ -1,0 +1,34 @@
+websites:
+  luke_web:
+    url: lukebell.co.za
+    port: 8000
+    ssl: true
+  paul_web:
+    url: paulwallington.co.za
+    port: 8001
+    ssl: true
+  caleb_web:
+    url: calebbell.co.za
+    port: 8002
+    ssl: true
+  joe_web:
+    url: joeprussian.lukebell.co.za
+    port: 8003
+    ssl: true
+  frauke_web:
+    url: fraukestegmann.lukebell.co.za
+    port: 8004
+    ssl: true
+  pocket_wallet_web:
+    url: pocketwallet.co.za
+    port: 8005
+    ssl: true
+  za_pocket_wallet_web:
+    url: za.pocketwallet.co.za;
+    port: 8006
+    ssl: true
+  map_app:
+    url: maps.lukebell.co.za
+    port: 9000
+    ssl: false
+
