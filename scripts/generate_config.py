@@ -82,4 +82,4 @@ with open("data/nginx/config.yaml", 'r') as stream:
         output.writelines([f"{l}\n" for l in website_conf])
 
 
-os.environ['domains'] = " ".join(domains_list)}
+os.environ['domains'] = " ".join(domains_list)
