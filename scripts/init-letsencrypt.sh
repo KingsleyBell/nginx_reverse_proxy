@@ -68,7 +68,9 @@ for domain in $domains; do
       --agree-tos \
       --force-renewal" certbot
   echo
+
+  echo "### Reloading nginx ..."
+  docker-compose exec nginx nginx -s reload
+
 done
 
-echo "### Reloading nginx ..."
-docker-compose exec nginx nginx -s reload

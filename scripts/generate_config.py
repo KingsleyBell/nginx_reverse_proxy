@@ -83,3 +83,4 @@ with open("data/nginx/config.yaml", 'r') as stream:
 
 
 os.environ['domains'] = " ".join(domains_list)
+print(" ".join(domains_list))
