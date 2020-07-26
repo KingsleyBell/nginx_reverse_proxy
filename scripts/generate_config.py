@@ -2,12 +2,12 @@ import os
 import yaml
 
 output = open("data/nginx/nginx.conf", "w")
-domains_str = ""
+domains_list = []
 with open("data/nginx/config.yaml", 'r') as stream:
     config = yaml.safe_load(stream)
     for website, settings in config["websites"].items():
 
-        domains_str += settings["url"]
+        domains_list.append(settings["url"])
 
         if settings['ssl'] is True:
             servers = [
@@ -83,5 +83,5 @@ with open("data/nginx/config.yaml", 'r') as stream:
 
 # Run init-letsencrypt with domain names
 import subprocess
-env = {"domains": domains_str}
+env = {"domains": " ".join(domains_list)}
 subprocess.Popen("./scripts/init-letsencrypt.sh", env=env)
