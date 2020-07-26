@@ -7,10 +7,16 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./conf:/etc/nginx/conf.d
-      - /etc/letsencrypt:/etc/letsencrypt
+      - ./data/nginx:/etc/nginx/conf.d
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
       - /var/log/:/var/log
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
 networks:
   default:
     external:

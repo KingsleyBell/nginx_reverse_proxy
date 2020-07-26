@@ -1,9 +1,14 @@
+import os
 import yaml
 
-output = open("conf/nginx.conf", "w")
-with open("conf/config.yaml", 'r') as stream:
+output = open("data/nginx/nginx.conf", "w")
+domains_str = ""
+with open("data/nginx/config.yaml", 'r') as stream:
     config = yaml.safe_load(stream)
     for website, settings in config["websites"].items():
+
+        domains_str += settings["url"]
+
         if settings['ssl'] is True:
             servers = [
                 "server {",
@@ -17,6 +22,9 @@ with open("conf/config.yaml", 'r') as stream:
                 f"   error_log /var/log/{website}_error.log debug;\n",
                 "   location / {",
                 "       return 301 https://$host$request_uri;",
+                "   }\n",
+                "   location /.well-known/acme-challenge/ {",
+                "       root /var/www/certbot;",
                 "   }",
                 "}\n",
                 "server {",
@@ -54,7 +62,7 @@ with open("conf/config.yaml", 'r') as stream:
                 "   location / {",
                 "       proxy_read_timeout 300s;",
                 "       proxy_connect_timeout 300s;",
-                f"      proxy_pass http://{website}/;",
+                f"       proxy_pass http://{website}/;",
                 "       proxy_set_header Host $host;",
                 "       proxy_set_header X-Real-IP $remote_addr;",
                 "       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;",
@@ -72,3 +80,8 @@ with open("conf/config.yaml", 'r') as stream:
             "\n"
         ]
         output.writelines([f"{l}\n" for l in website_conf])
+
+# Run init-letsencrypt with domain names
+import subprocess
+env = {"domains": domains_str}
+subprocess.Popen("./scripts/init-letsencrypt.sh", env=env)

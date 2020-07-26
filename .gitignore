@@ -1,5 +1,5 @@
 .DS_STORE
 .idea
 venv/
-data/
+data/certbot/
 envfile
