@@ -81,7 +81,5 @@ with open("data/nginx/config.yaml", 'r') as stream:
         ]
         output.writelines([f"{l}\n" for l in website_conf])
 
-# Run init-letsencrypt with domain names
-import subprocess
-env = {"domains": " ".join(domains_list)}
-subprocess.Popen("./scripts/init-letsencrypt.sh", env=env)
+
+os.environ['domains'] = ".join(domains_list)}
