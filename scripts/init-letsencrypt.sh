@@ -50,6 +50,9 @@ for domain in $domains; do
     rm -Rf /etc/letsencrypt/renewal/$domain.conf" certbot
   echo
 
+  set -x
+  docker ps | grep nginx
+  set +x
 
   echo "### Requesting Let's Encrypt certificate for $domain ..."
   #Join $domains to -d args and $email to --email args
