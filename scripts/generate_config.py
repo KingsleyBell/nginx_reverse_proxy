@@ -2,14 +2,12 @@ import os
 import yaml
 
 output = open("data/nginx/nginx.conf", "w")
-domains_list = []
+cert_domains_list = []
 with open("data/nginx/config.yaml", 'r') as stream:
     config = yaml.safe_load(stream)
     for website, settings in config["websites"].items():
-
-        domains_list.append(settings["url"])
-
         if settings['ssl'] is True:
+            domains_list.append(settings["url"])
             servers = [
                 "server {",
                 "   listen 80;",
@@ -81,6 +79,4 @@ with open("data/nginx/config.yaml", 'r') as stream:
         ]
         output.writelines([f"{l}\n" for l in website_conf])
 
-
-os.environ['domains'] = " ".join(domains_list)
-print(" ".join(domains_list))
+print(" ".join(cert_domains_list))

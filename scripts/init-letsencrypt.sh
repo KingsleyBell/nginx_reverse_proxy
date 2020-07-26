@@ -39,10 +39,11 @@ for domain in $domains; do
   echo
 done
 
+echo "### Starting nginx ..."
+docker-compose up --force-recreate -d nginx
+echo
+
 for domain in $domains; do
-  echo "### Starting nginx ..."
-  docker-compose up --force-recreate -d nginx
-  echo
 
   echo "### Deleting dummy certificate for $domain ..."
   docker-compose run --rm --entrypoint "\
@@ -72,9 +73,7 @@ for domain in $domains; do
       --agree-tos \
       --force-renewal" certbot
   echo
-
-  echo "### Reloading nginx ..."
-  docker-compose exec nginx nginx -s reload
-
 done
 
+echo "### Reloading nginx ..."
+docker-compose exec nginx nginx -s reload
