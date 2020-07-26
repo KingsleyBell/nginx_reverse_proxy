@@ -37,8 +37,9 @@ for domain in $domains; do
       -out '$path/fullchain.pem' \
       -subj '/CN=localhost'" certbot
   echo
+done
 
-
+for domain in $domains; do
   echo "### Starting nginx ..."
   docker-compose up --force-recreate -d nginx
   echo
