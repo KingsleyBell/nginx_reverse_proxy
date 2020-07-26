@@ -7,7 +7,7 @@ with open("data/nginx/config.yaml", 'r') as stream:
     config = yaml.safe_load(stream)
     for website, settings in config["websites"].items():
         if settings['ssl'] is True:
-            domains_list.append(settings["url"])
+            cert_domains_list.append(settings["url"])
             servers = [
                 "server {",
                 "   listen 80;",
