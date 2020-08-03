@@ -26,8 +26,8 @@ with open("data/nginx/config.yaml", 'r') as stream:
                 "   }",
                 "}\n",
                 "server {",
-                "   listen 443 ssl;"
-                f"   server_name {settings['url']}",
+                "   listen 443 ssl;",
+                f"   server_name {settings['url']};",
                 "   client_max_body_size 100M;",
                 "   error_log /var/log/luke_error_ssl.log debug;",
                 f"   ssl_certificate /etc/letsencrypt/live/{settings['url']}/fullchain.pem;",
