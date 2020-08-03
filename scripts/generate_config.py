@@ -28,7 +28,7 @@ with open("data/nginx/config.yaml", 'r') as stream:
                 "server {",
                 "   listen 443 ssl;"
                 f"   server_name {settings['url']}",
-                "   client_max_body_size 4G;",
+                "   client_max_body_size 100M;",
                 "   error_log /var/log/luke_error_ssl.log debug;",
                 f"   ssl_certificate /etc/letsencrypt/live/{settings['url']}/fullchain.pem;",
                 f"   ssl_certificate_key /etc/letsencrypt/live/{settings['url']}/privkey.pem;",
@@ -78,5 +78,3 @@ with open("data/nginx/config.yaml", 'r') as stream:
             "\n"
         ]
         output.writelines([f"{l}\n" for l in website_conf])
-
-print(" ".join(cert_domains_list))
