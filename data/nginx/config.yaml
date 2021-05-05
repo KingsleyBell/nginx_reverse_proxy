@@ -31,4 +31,8 @@ websites:
     url: maps.lukebell.co.za
     port: 9000
     ssl: false
+  anna_web:
+    url: annamathilde.com
+    port: 8007
+    ssl: false
 
