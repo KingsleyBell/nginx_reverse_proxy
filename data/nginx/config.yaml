@@ -8,7 +8,7 @@ websites:
     port: 8001
     ssl: true
   caleb_web:
-    url: calebbell.co.za
+    url: mrcalebbell.com
     port: 8002
     ssl: true
   joe_web:
