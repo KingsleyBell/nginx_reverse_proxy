@@ -3,10 +3,6 @@ websites:
     url: lukebell.co.za
     port: 8000
     ssl: true
-  paul_web:
-    url: paulwallington.co.za
-    port: 8001
-    ssl: true
   caleb_web:
     url: mrcalebbell.com
     port: 8002
