@@ -15,14 +15,6 @@ websites:
     url: fraukestegmann.lukebell.co.za
     port: 8004
     ssl: true
-  pocket_wallet_web:
-    url: pocketwallet.co.za
-    port: 8005
-    ssl: true
-  za_pocket_wallet_web:
-    url: za.pocketwallet.co.za
-    port: 8006
-    ssl: true
   map_app:
     url: maps.lukebell.co.za
     port: 9000
