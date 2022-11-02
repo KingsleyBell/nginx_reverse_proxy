@@ -23,4 +23,12 @@ websites:
     url: mathildefilm.com
     port: 8007
     ssl: true
+  tiheli_web:
+    url: tihelitiheli.com
+    port: 8008
+    ssl: true
+  poloko_web:
+    url: polokoleteka.com
+    port: 8009
+    ssl: true
 
